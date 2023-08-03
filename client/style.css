@@ -6,19 +6,34 @@
   font-family: "Open Sans", sans-serif;
 }
 body {
-  background: rgb(1, 1, 59);
+  background: rgb(235, 235, 235);
+  overflow-x: hidden;
+  /* background: rgb(1, 1, 59); */
 }
-#app {
+.app {
   width: 100vw;
   height: 100vh;
-  background: rgb(1, 1, 59);
-
+  background: aliceblue;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
-
+.header {
+  width: 100%;
+  height: 5rem;
+  /* border: 1px solid black; */
+  font-size: 3rem;
+  font-weight: 600;
+  color: white;
+  background: #151516;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 0;
+  box-shadow: 2px 5px 9px rgba(255, 255, 255, 0.438);
+  padding: 0 2em 0 1.2em;
+}
 .chatContainer {
   flex: 1;
   width: 100%;
@@ -28,7 +43,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-
+  color: #3a3737;
   -ms-overflow-style: none;
   scrollbar-width: none;
 
@@ -38,38 +53,43 @@ body {
 .chatContainer::-webkit-scrollbar {
   display: none;
 }
-.wrapper {
+.wrapperfalse {
   width: 100%;
   padding: 15px;
+  /* background: #000000; */
+  color: inherit;
 }
-.ai {
-  background: #40414f;
+.wrapperai {
+  width: 100%;
+  padding: 15px;
+  background: #e4e4e47a;
+  color: inherit;
 }
+/* .ai {
+} */
 
 .chat {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 10px;
+  color: inherit;
 }
 
 .profile {
   width: 36px;
   height: 36px;
   border-radius: 5px;
-
   background: #5436da;
-
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.ai .profile {
+.wrapperai .profile {
   background: #10a37f;
 }
 
@@ -82,7 +102,8 @@ body {
 .message {
   flex: 1;
   border-radius: 3px;
-  color: #dcdcdc;
+  color: inherit;
+  /* color: #dcdcdc; */
   font-size: 1.1rem;
   line-height: 2rem;
   max-width: 100%;
@@ -107,6 +128,7 @@ body {
   display: flex;
   flex-direction: row;
   gap: 10px;
+  border-radius: 4px;
 }
 .prompt {
   width: 100%;
@@ -127,4 +149,89 @@ body {
 .btn img {
   width: 30px;
   height: 30px;
+}
+
+/* Dark Mode Button */
+.modeBtn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  display: none;
+}
+.label {
+  width: 50px;
+  height: 50px;
+  /* background: rebeccapurple; */
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 4px 15px rgba(255, 255, 255, 0.507);
+}
+.checkbox {
+  position: absolute;
+  opacity: 0;
+}
+.sun {
+  position: absolute;
+  font-size: 0.8em !important;
+  color: #ffab0f;
+  /* color: #666; */
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+  transform: scale(0);
+  transition: 1s ease;
+}
+.moon {
+  font-size: 0.8em !important;
+  color: #666;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+  transition: 1s ease;
+  transition-delay: 0.8s;
+}
+.checkbox:checked ~ .sun {
+  transform: scale(1) rotate(360deg);
+}
+.checkbox:checked ~ .moon {
+  transition-delay: 0s;
+  transform: rotate(360deg) scale(0);
+}
+
+.toggle {
+  position: absolute;
+  /* display: block; */
+  width: 50px;
+  height: 50px;
+  background: #3a3a3a;
+  /* background: #2b2b2b; */
+  border-radius: 50%;
+
+  box-shadow: inset 0px 8px 60px rgba(0, 0, 0, 0.1),
+    inset 0px 8px 8px rgba(0, 0, 0, 0.1), inset 0px -4px 4px rgba(0, 0, 0, 0.1);
+  z-index: -1;
+  transition: 1s;
+}
+.checkbox:checked ~ .toggle {
+  background: #ffffff;
+}
+
+.darkMode {
+  background: rgb(37, 37, 37);
+  color: white;
+}
+.darkModeColor {
+  color: white;
+}
+
+@media screen and (max-width: 615px) {
+  .header {
+    padding: 0 1.5em 0 1.2em;
+    font-size: 2.2rem;
+    height: 4.3rem;
+  }
+}
+@media screen and (max-width: 380px) {
+  .header {
+    padding: 0 1em 0 0.6em;
+  }
 }

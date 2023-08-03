@@ -5,10 +5,19 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Vite App</title>
+    <title>AI ChatBot</title>
   </head>
   <body>
-    <div id="app">
+    <div id="app" class="app">
+      <header class="header" id="header">
+        AI Assistant
+        <label class="label" id="label">
+          <input type="checkbox" class="checkbox" id="checkbox" />
+          <ion-icon name="sunny" class="sun"></ion-icon>
+          <ion-icon name="moon" class="moon"></ion-icon>
+          <span class="toggle"></span>
+        </label>
+      </header>
       <div class="chatContainer" id="chatContainer"></div>
       <form class="form" id="form">
         <textarea
@@ -24,6 +33,22 @@
         </button>
       </form>
     </div>
+    <div class="modeBtn" id="modeBtn">
+      <label class="label">
+        <input type="checkbox" class="checkbox" id="checkbox" />
+        <ion-icon name="sunny" class="sun"></ion-icon>
+        <ion-icon name="moon" class="moon"></ion-icon>
+        <span class="toggle"></span>
+      </label>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <script type="module" src="/script.js"></script>
   </body>
 </html>

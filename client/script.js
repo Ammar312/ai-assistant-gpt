@@ -3,13 +3,13 @@ import user from "./assets/user.svg";
 
 const form = document.querySelector("#form");
 const chatContainer = document.querySelector("#chatContainer");
-
+let isDarkMode = false;
 let loadInterval;
 
 const loader = (element) => {
   element.textContent = "";
   loadInterval = setInterval(() => {
-    element.textContent = ".";
+    element.textContent += ".";
     if (element.textContent === "....") {
       element.textContent = "";
     }
@@ -103,15 +103,57 @@ const handleSubmit = async (e) => {
       alert(err);
       console.log(err);
     }
+    // if (isDarkMode) {
+    //   messageDiv.classList.add("darkModeColor");
+    // } else {
+    //   messageDiv.classList.remove("darkModeColor");
+    // }
   } catch (error) {
     console.error(error);
     messageDiv.innerHTML = "Something went wrong";
     alert("Error occurred while communicating with the server");
   }
 };
+// const looponArray = (arr) => {
+//   arr.forEach((message) => {
+//     // if (message.classList.contains("darkModeColor")) {
+//     //   message.classList.remove("darkModeColor");
+//     // } else {
+//     //   message.classList.add("darkModeColor");
+//     // }
+//     message.classList.toggle("darkModeColor");
+//   });
+// };
+
+const darkModeFunc = (event) => {
+  event.stopPropagation();
+  console.log("clicked!");
+  isDarkMode = !isDarkMode;
+  const app = document.querySelector("#app");
+  app.classList.toggle("darkMode");
+  const chatContainer = document.querySelectorAll(".chatContainer");
+  if (isDarkMode) {
+    app.classList.add("darkMode");
+    chatContainer.forEach((message) => {
+      message.classList.add("darkModeColor");
+    });
+  } else {
+    app.classList.remove("darkMode");
+    chatContainer.forEach((message) => {
+      message.classList.remove("darkModeColor");
+    });
+  }
+  console.log(chatContainer);
+};
+
 form.addEventListener("submit", handleSubmit);
 form.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     handleSubmit(e);
   }
 });
+
+/*-----Light and Dark MOde------*/
+
+const checkbox = document.querySelector("#checkbox");
+checkbox.addEventListener("click", darkModeFunc);
